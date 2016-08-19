@@ -981,15 +981,4 @@ def quitExcel():
     if(type(excelApp)!=type(None)):
         excelApp.Quit()
         print("excel程序执行完毕...")
-
-newExcel("D:/test.xls")
-openExcel("D:/test.xls")
-setCellValue(1,1,"pyExcel")
-copyValue("a1","d6")
-setColHeight()
-setRowHeight()
-setPageHeader(pos="center",show="date,bold,italic,underline")
-setAllCellStyle(bold=True)
-mergeCell("a1:c4",isCover=True)
-closeExcel()
-quitExcel()
+        
