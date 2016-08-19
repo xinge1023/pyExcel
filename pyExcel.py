@@ -131,6 +131,12 @@ def setPageHeader(pos="center",show="pageNum"):
     show = show.replace("date","&D").replace("time","&T")
     show = show.replace("fileName","&F").replace("pageNum","&P")
     show = show.replace("bold","&B").replace("italic","&I").replace("underline","&U")
+    if("&U" in show):
+    	show = "&U"+show.replace("&U","")
+    if("&I" in show):
+    	show = "&I"+show.replace("&I","")
+    if("&B" in show):
+    	show = "&B"+show.replace("&B","")
     show = show.replace(",","")
     if(pos == "center"):
         ActiveSheet.PageSetup.CenterHeader = show
@@ -146,6 +152,12 @@ def setPageFooter(pos="center",show="pageNum"):
     show = show.replace("date","&D").replace("time","&T")
     show = show.replace("fileName","&F").replace("pageNum","&P")
     show = show.replace("bold","&B").replace("italic","&I").replace("underline","&U")
+    if("&U" in show):
+    	show = "&U"+show.replace("&U","")
+    if("&I" in show):
+    	show = "&I"+show.replace("&I","")
+    if("&B" in show):
+    	show = "&B"+show.replace("&B","")
     show = show.replace(",","")
     if(pos == "center"):
         ActiveSheet.PageSetup.CenterFooter = show
@@ -973,8 +985,10 @@ def quitExcel():
 newExcel("D:/test.xls")
 openExcel("D:/test.xls")
 setCellValue(1,1,"pyExcel")
+copyValue("a1","d6")
 setColHeight()
 setRowHeight()
+setPageHeader(pos="center",show="date,bold,italic,underline")
 setAllCellStyle(bold=True)
 mergeCell("a1:c4",isCover=True)
 closeExcel()
