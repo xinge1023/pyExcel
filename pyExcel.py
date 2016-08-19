@@ -373,7 +373,7 @@ def setCellStyle(row,col=None,fontSize=None,fontName=None,bold=None,italic=None,
         #是否自动换行,默认不换行
         cell.WrapText = wrapText
 
-#设置Selection样式(被选择德单元格)
+#设置Selection样式(被选择的单元格)
 def setSelectionStyle(fontSize=None,fontName=None,bold=None,italic=None,underline=None,color=None,bgColor=None,borderLeft=None,borderRight=None,borderTop=None,borderBottom=None,numberFormat="general",wrapText=None,horizontalAlign=None,verticalAlign=None):
     selection = excelApp.Selection
     #默认(fontSize=12)
