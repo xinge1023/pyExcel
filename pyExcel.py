@@ -1,3 +1,5 @@
+#(author:xinge1023@163.com)
+#(date:2016-08-15)
 import win32com,os
 from win32com.client import Dispatch, constants
 
