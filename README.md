@@ -1,7 +1,5 @@
 ##pyExcel是什么?
-利用python的win32模块处理excel的工具
-
-[win32模块下载地址:](https://sourceforge.net/projects/pywin32/files/pywin32/)
+利用python的win32模块处理excel的工具[win32模块下载地址](https://sourceforge.net/projects/pywin32/files/pywin32/)
 
 目前仅在wps下测试，其他版本office兼容性未经验证
 
