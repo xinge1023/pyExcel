@@ -1,5 +1,5 @@
 ##pyExcel是什么?
-利用python的[win32模块](https://sourceforge.net/projects/pywin32/files/pywin32/)处理excel的工具
+利用python的[win32模块](https://sourceforge.net/projects/pywin32/files/pywin32/Build%20220/)处理excel的工具
 
 目前仅在wps下测试，其他版本office兼容性未经验证
 
