@@ -18,7 +18,6 @@ showTips = True             #是否打印提示信息
 #isMakedirs(是否自动创建目录)isCover(是否自动覆盖旧文件) 
 def newExcel(fileaddr,isMakedirs=False,isCover=False):
     global excelApp,excel
-    setExcelVisible(True,False)
     excel = excelApp.Workbooks.Add()
     fileSplit = fileaddr.split("\\")
     fileaddr = ""
@@ -52,24 +51,23 @@ def openExcel(fileaddr):
     fileaddr +=  leastSplit
     if(os.path.exists(fileaddr)):
         excel = excelApp.Workbooks.Open(fileaddr)
-        init()
+        excelInit()
     else:
         print("文件打开失败,请检查路径是否正确("+str(fileaddr)+")")
 
 
 #初始化
-def init():
+def excelInit():
     global excelApp,Workbooks,ActiveWorkbook,Worksheets,ActiveSheet,Selection
     Workbooks = excelApp.Workbooks
     ActiveWorkbook = excelApp.ActiveWorkbook
     Worksheets = excelApp.ActiveWorkbook.Worksheets
     ActiveSheet = ActiveWorkbook.ActiveSheet
     Selection = excelApp.Selection
-    setExcelVisible(True,False)
-    print("当前版本:"+getExcelVersion())
+    print("当前Excel版本:"+getExcelVersion())
 
 # 后台运行,不显示,不警告
-def setExcelVisible(visible=1,displayAlerts=0):
+def setExcelVisible(visible=True,displayAlerts=False):
     #运行情况可见(1为可见,0为不可见)
     excelApp.Visible = visible
     #屏蔽提示(1为显示,0为不显示)
@@ -131,12 +129,6 @@ def setPageHeader(pos="center",show="pageNum"):
     show = show.replace("date","&D").replace("time","&T")
     show = show.replace("fileName","&F").replace("pageNum","&P")
     show = show.replace("bold","&B").replace("italic","&I").replace("underline","&U")
-    if("&U" in show):
-    	show = "&U"+show.replace("&U","")
-    if("&I" in show):
-    	show = "&I"+show.replace("&I","")
-    if("&B" in show):
-    	show = "&B"+show.replace("&B","")
     show = show.replace(",","")
     if(pos == "center"):
         ActiveSheet.PageSetup.CenterHeader = show
@@ -152,12 +144,6 @@ def setPageFooter(pos="center",show="pageNum"):
     show = show.replace("date","&D").replace("time","&T")
     show = show.replace("fileName","&F").replace("pageNum","&P")
     show = show.replace("bold","&B").replace("italic","&I").replace("underline","&U")
-    if("&U" in show):
-    	show = "&U"+show.replace("&U","")
-    if("&I" in show):
-    	show = "&I"+show.replace("&I","")
-    if("&B" in show):
-    	show = "&B"+show.replace("&B","")
     show = show.replace(",","")
     if(pos == "center"):
         ActiveSheet.PageSetup.CenterFooter = show
@@ -500,7 +486,7 @@ def getLeastCell():
     colsCount = ActiveSheet.Columns.count
     leastCell = ActiveSheet.Cells(rowsCount,colsCount)
     return leastCell    
-
+	
 #*******************************************************#
 #                       行列操作                        #
 #*******************************************************#
@@ -981,4 +967,4 @@ def quitExcel():
     if(type(excelApp)!=type(None)):
         excelApp.Quit()
         print("excel程序执行完毕...")
-        
+
